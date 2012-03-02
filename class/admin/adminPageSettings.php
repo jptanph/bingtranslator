@@ -3,8 +3,6 @@ require_once('builder/builderInterface.php');
 require_once('accessTokenAuthentication.php');
 require_once('httpTranslator.php');
 require_once('bingTranslatorClass.php');
-
-
 class adminPageSettings extends Controller_Admin
 {
     public function run($aArgs)
@@ -16,10 +14,11 @@ class adminPageSettings extends Controller_Admin
         $oCommonGet = common()->modelGet();
         $oCommonExec = common()->modelExec();
 
-        $aResult = $oCommonGet->getData('settings', array('where' => " seq = {$aArgs['seq']}"));
+        $aSettings = $oCommonGet->getData('settings', array('where' => " seq = {$aArgs['seq']}"));
 
 
 
+        usbuilder()->vd($aResult);
          $aLangCode = array(
              'ar'=>'Arabic',
              'bg'=>'Bulgarian',
@@ -62,8 +61,8 @@ class adminPageSettings extends Controller_Admin
        // $aLang = $oBingTrans->getLanguages($aLangCode);
 
         $this->importJs(__CLASS__);
-        $this->assign('sDef1',($aResult['default_lang1']) ? $aResult['default_lang1'] : '');
-        $this->assign('sDef2',($aResult['default_lang2']) ? $aResult['default_lang2'] : '');
+        $this->assign('sDef1',($aSettings['default_lang1']) ? $aSettings['default_lang1'] : '');
+        $this->assign('sDef2',($aSettings['default_lang2']) ? $aSettings['default_lang2'] : '');
         $this->assign('aLangCode',$aLangCode);
         $this->assign('iSeq',$aArgs['seq']);
         $this->assign('sPrefix',$sPrefix);

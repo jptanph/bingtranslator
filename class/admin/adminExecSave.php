@@ -7,7 +7,7 @@ class adminExecSave extends Controller_AdminExec
         usbuilder()->init($this, $aArgs);
         $oCommonGet = common()->modelGet();
         $oCommonExec = common()->modelExec();
-        $sUrl = usbuilder()->getUrl('adminPageSettings');
+        $sUrlSettings = usbuilder()->getUrl('adminPageSettings');
 
         $iTotal = $oCommonGet->getTotalRows($aArgs['seq']);
 
@@ -35,6 +35,6 @@ class adminExecSave extends Controller_AdminExec
             usbuilder()->message('Saved succesfully!', 'success');
         }
 
-        usbuilder()->jsMove($sUrl . '&seq=' .$aArgs['seq']);
+        usbuilder()->jsMove($sUrlSettings);
     }
 }
