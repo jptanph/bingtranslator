@@ -1,6 +1,19 @@
 <?php
+
 class modelExecData extends Model
 {
+    /**
+     * Execute custom query
+     * @param String $sTable
+     * @param String $sRow
+     * @return Boolean, String, Array, Integer
+     */
+
+    public function execQuery($sQuery, $sRow = "row")
+    {
+        return $this->query($sQuery, $sRow);
+    }
+
     /**
      * Delete data
      * @param String $sTable
@@ -80,11 +93,15 @@ class modelExecData extends Model
         return "UPDATE " . APP_ID . "_" . $sTable . " SET " . substr($sString, 0, -1) . " " . ($sWhere ? " WHERE " . $sWhere : "");
     }
 
-    public function deleteContentsBySeq($iSequence, $sTable = "settings")
+    public function deleteContentsBySeq($iSequence, $aTable)
     {
         $sSeqs = implode(',', $iSequence);
-        $sQuery = "DELETE FROM " . APP_ID . "_" . $sTable . " WHERE seq in(" . $sSeqs . ")";
-        $mResult = $this->query($sQuery);
+
+        if (is_array($aTable)){
+            foreach ($aTable as $sTable)
+                $mResult = $this->delete($sTable, "seq IN (" . $sSeqs . ")");
+        }
+        else $mResult = $this->delete($aTable, "seq IN (" . $sSeqs . ")");
 
         return $mResult;
     }
