@@ -59,6 +59,10 @@ class bingTranslatorClass
 
     private function _xml_load_str($sCurlResponse)
     {
-        return simplexml_load_string($sCurlResponse);
+        $oXml = simplexml_load_string($sCurlResponse);
+
+        $aJe = json_encode($oXml);
+        return json_decode($aJe,TRUE);
+
     }
 }

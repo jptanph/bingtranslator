@@ -1,6 +1,6 @@
 
 var adminPageSettings = {
-        execSave  : function(){
-            alert(1)
-        }
+    execSave  : function(){
+        document.bingtranslator_settings_form.submit();
+    }
 }

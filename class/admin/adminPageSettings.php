@@ -10,53 +10,64 @@ class adminPageSettings extends Controller_Admin
     public function run($aArgs)
     {
         usbuilder()->init($this, $aArgs);
-        $oBingTrans = new bingTranslatorClass();
-         $oBingTrans->init_tokens('johnsimplexi', 'h6JMhf32gavU7yc9QzhOzlsff3eDkey5jcwfRF0hcso=');
-        // $aResult = $oBingTrans->getTranslation('The world is full of sorrow','en','de');
+        $sPrefix = APP_ID . '_';
+        usbuilder()->getFormAction($sPrefix . 'settings_form','adminExecSave');
+
+        $oCommonGet = common()->modelGet();
+        $oCommonExec = common()->modelExec();
+
+        $aResult = $oCommonGet->getData('settings', array('where' => " seq = {$aArgs['seq']}"));
+
+
 
          $aLangCode = array(
-                 'ar',
-                 'bg',
-                 'zh-CHS',
-                 'zh-CHT',
-                 'cs',
-                 'da',
-                 'nl',
-                 'en',
-                 'et',
-                 'fi',
-                 'fr',
-                 'de',
-                 'el',
-                 'ht',
-                 'he',
-                 'hi',
-                 'hu',
-                 'id',
-                 'it',
-                 'ja',
-                 'ko',
-                 'lv',
-                 'lt',
-                 'no',
-                 'pl',
-                 'pt',
-                 'ro',
-                 'ru',
-                 'sk',
-                 'sl',
-                 'es',
-                 'sv',
-                 'th',
-                 'tr',
-                 'uk',
-                 'vi'
+             'ar'=>'Arabic',
+             'bg'=>'Bulgarian',
+             'zh-CHS'=>'Chinese (Simplified)',
+             'zh-CHT'=>'Chinese (Traditional)',
+             'cs' => 'Czech',
+             'da' => 'Danish',
+             'nl' => 'Dutch',
+             'en' => 'English',
+             'et' => 'Estonian',
+             'fi' => 'Finnish',
+             'fr' => 'French',
+             'de' => 'German',
+             'el' => 'Greek',
+             'ht' => 'Haitian Creole',
+             'he' => 'Hebrew',
+             'hi' => 'Hindi',
+             'hu' => 'Hungarian',
+             'id' => 'Indonesian',
+             'it' => 'Italian',
+             'ja' => 'Japanese',
+             'ko' => 'Korean',
+             'lv' => 'Latvian',
+             'lt' => 'Lithuanian',
+             'no' => 'Norwegian',
+             'pl' => 'Polish',
+             'pt' => 'Portuguese',
+             'ro' => 'Romanian',
+             'ru' => 'Russian',
+             'sk' => 'Slovak',
+             'sl' => 'Slovenian',
+             'es' => 'Spanish',
+             'sv' => 'Swedish',
+             'th' => 'Thai',
+             'tr' => 'Turkish',
+             'uk' => 'Ukrainian',
+             'vi' => 'Vietnamese'
          );
-         $aLang = $oBingTrans->getLanguages($aLangCode);
-         usbuilder()->vd(json_encode($aLang));
 
-//         $this->importJs(__CLASS__);
-//         $this->view('adminPageSettings');
+       // $aLang = $oBingTrans->getLanguages($aLangCode);
+
+        $this->importJs(__CLASS__);
+        $this->assign('sDef1',($aResult['default_lang1']) ? $aResult['default_lang1'] : '');
+        $this->assign('sDef2',($aResult['default_lang2']) ? $aResult['default_lang2'] : '');
+        $this->assign('aLangCode',$aLangCode);
+        $this->assign('iSeq',$aArgs['seq']);
+        $this->assign('sPrefix',$sPrefix);
+        $this->view('adminPageSettings');
 
     }
 

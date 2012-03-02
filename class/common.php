@@ -5,12 +5,12 @@ class common
     /**
      * @return modelContents
      */
-    public function modelExecData()
+    public function modelExec()
     {
         return getInstance('modelExecData');
     }
 
-    public function modelGetData()
+    public function modelGet()
     {
         return getInstance('modelGetData');
     }
