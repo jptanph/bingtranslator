@@ -16,9 +16,6 @@ class adminPageSettings extends Controller_Admin
 
         $aSettings = $oCommonGet->getData('settings', array('where' => " seq = {$aArgs['seq']}"));
 
-
-
-        usbuilder()->vd($aResult);
          $aLangCode = array(
              'ar'=>'Arabic',
              'bg'=>'Bulgarian',
@@ -58,8 +55,6 @@ class adminPageSettings extends Controller_Admin
              'vi' => 'Vietnamese'
          );
 
-       // $aLang = $oBingTrans->getLanguages($aLangCode);
-
         $this->importJs(__CLASS__);
         $this->assign('sDef1',($aSettings['default_lang1']) ? $aSettings['default_lang1'] : '');
         $this->assign('sDef2',($aSettings['default_lang2']) ? $aSettings['default_lang2'] : '');
@@ -67,7 +62,5 @@ class adminPageSettings extends Controller_Admin
         $this->assign('iSeq',$aArgs['seq']);
         $this->assign('sPrefix',$sPrefix);
         $this->view('adminPageSettings');
-
     }
-
 }
