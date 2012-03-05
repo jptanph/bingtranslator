@@ -12,7 +12,6 @@ class apiFrontBingtranslator extends Controller_Api
         $aData = array();
         $oBingTrans = new bingTranslatorClass();
         $oBingTrans->init_tokens('johnsimplexi', 'h6JMhf32gavU7yc9QzhOzlsff3eDkey5jcwfRF0hcso=');
-
         $sLang = $oBingTrans->getDetectTextLanguage($aArgs['text1']);
         $aResult = $oBingTrans->getTranslation($aArgs['text1'],$sLang[0],$aArgs['lang2']);
 

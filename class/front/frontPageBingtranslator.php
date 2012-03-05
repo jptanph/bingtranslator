@@ -66,6 +66,8 @@ class frontPageBingtranslator extends Controller_Front
         $sHtml .= "</select><input type='button' value='Translate' onclick='frontPageBingtranslator.translate()'/><br /><textarea id='str' style='resize:none;width:360px;height:90px;'></textarea><br /><textarea id='result' style='resize:none;width:360px;height:90px;'></textarea>";
 
         $this->importJs(__CLASS__);
+        $this->importJs('bingtranslator');
+        $this->importCss(__CLASS__);
         $this->assign('bingtranslator',$sHtml);
     }
 

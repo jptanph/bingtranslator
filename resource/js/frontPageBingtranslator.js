@@ -1,5 +1,4 @@
 
-
 var frontPageBingtranslator = {
     translate : function(){
         var sText = $("#str");
