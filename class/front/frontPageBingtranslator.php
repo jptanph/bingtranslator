@@ -7,9 +7,12 @@ class frontPageBingtranslator extends Controller_Front
     {
         usbuilder()->init($this, $aArgs);
         $sPrefix = APP_ID . '_';
+        $iSequence = $this->getSequence();
         $oCommonGet = common()->modelGet();
         $oCommonExec = common()->modelExec();
-        $aSettings = $oCommonGet->getData('settings', array('where' => " seq = {$aArgs['seq']}"));
+
+        $aSettings = $oCommonGet->getData('settings', array('where' => " seq = $iSequence"));
+
         $aLangCode = array(
                 'ar' => 'Arabic',
                 'bg' => 'Bulgarian',
@@ -52,13 +55,13 @@ class frontPageBingtranslator extends Controller_Front
         $sHtml = "";
         $sHtml .= "<select id='from'>";
         foreach($aLangCode as $key=>$val){
-            $sHtml .= "<option value='$key'>$val</option>";
+            $sHtml .= "<option value='$key' " . ( ($key==$aSettings['default_lang1']) ? "selected='selected'" : '') . ">$val</option>";
         }
         $sHtml .= "</select>";
 
         $sHtml .= "<select id='to'>";
         foreach($aLangCode as $key=>$val){
-            $sHtml .= "<option value='$key'>$val</option>";
+            $sHtml .= "<option value='$key' " . ( ($key==$aSettings['default_lang2']) ? "selected='selected'" : '') . ">$val</option>";
         }
         $sHtml .= "</select><input type='button' value='Translate' onclick='frontPageBingtranslator.translate()'/><br /><textarea id='str' style='resize:none;width:360px;height:90px;'></textarea><br /><textarea id='result' style='resize:none;width:360px;height:90px;'></textarea>";
 

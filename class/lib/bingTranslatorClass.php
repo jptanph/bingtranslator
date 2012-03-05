@@ -35,6 +35,15 @@ class bingTranslatorClass
         return $this->_xml_load_str($sCurlResponse);
     }
 
+    public function getDetectTextLanguage($sText)
+    {
+        $sDetectMethodUrl = "http://api.microsofttranslator.com/V2/Http.svc/Detect?text=".urlencode($sText);
+
+        $sCurlResponse = $this->_curlRequest($sDetectMethodUrl);
+
+        return $this->_xml_load_str($sCurlResponse);
+    }
+
     public function getLanguages($aLangCode)
     {
         $sLocale = 'en';

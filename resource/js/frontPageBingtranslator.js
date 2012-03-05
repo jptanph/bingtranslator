@@ -15,8 +15,8 @@ var frontPageBingtranslator = {
                 lang1 : sFrom.val(),
                 lang2 : sTo.val()
             },success : function(server_response){
-                
-                $("#result").val(server_response.Data)
+                sFrom.val(server_response.Data.lang)
+                $("#result").val(server_response.Data.translation)
             }
         }
         
