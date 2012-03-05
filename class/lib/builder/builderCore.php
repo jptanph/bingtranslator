@@ -177,6 +177,27 @@ class builderCore
         return $sUrl;
     }
 
+    public function getParam($sKey)
+    {
+        $sResultKey = $this->getParamKey($sKey);
+        return $this->_aArgs[$sResultKey];
+    }
+
+    public function getParamKey($sKey)
+    {
+        $aAppInfo = $this->getAppInfo();
+        if ($aAppInfo['class_type'] == 'front') {
+            if ($aAppInfo['seq']) {
+                $sResultKey = strtolower(APP_ID) . '_' . $aAppInfo['seq'] . ':' . $sKey;
+            } else {
+                $sResultKey = strtolower(APP_ID) . ':' . $sKey;
+            }
+        } else {
+            $sResultKey = $sKey;
+        }
+        return $sResultKey;
+    }
+
     public function vd($mData, $sKey = null)
     {
         $_SESSION['usbuilder']['vd']['show'] = true;
@@ -303,8 +324,8 @@ class builderCore
             return $sXML;
         } elseif ($aArgs['mode'] == 'lang') {
             $oDOMDocument = new DOMDocument();
-            if (isset($aArgs['filename'])) {
-                $oDOMDocument->load(APP_PATH . '/resource/lang/' . $aArgs['lang'] . '/' . $aArgs['filename'] .'.xml');
+            if (isset($aArgs['name'])) {
+                $oDOMDocument->load(APP_PATH . '/resource/lang/' . $aArgs['lang'] . '/' . $aArgs['name'] .'.xml');
             } else {
                 $oDOMDocument->load(APP_PATH . '/resource/lang/' . $aArgs['lang'] . '/common.xml');
             }
@@ -334,6 +355,7 @@ class builderCore
 
     public function helper($sHelperName)
     {
+        require_once('builder/builderHelper.php');
         require_once('builder/helper/' . $sHelperName .'/helper' . ucfirst($sHelperName) . 'Handler.php');
         $oHelper = getInstance('helper' . ucfirst($sHelperName) . 'Handler');
         return $oHelper;

@@ -55,9 +55,44 @@ class frontPageBingtranslator extends Controller_Front
 
 
         $sHtml = "";
+        $sHtml .= "<div class='bingmenu'>\n";
+        $sHtml .= "		<a href='#' class='bingmenua'>\n";
+        $sHtml .= "			<span>B</span>\n";
+        $sHtml .= "			<span>I</span>\n";
+        $sHtml .= "			<span>N</span>\n";
+        $sHtml .= "			<span>G</span>\n";
+        $sHtml .= "		</a>\n";
+        $sHtml .= "	</div>\n";
+        $sHtml .= "	<div id='bingtranslator' class='bingtranslator'>\n";
+        $sHtml .= "		<div class='bingtranslate_top'>\n";
+        $sHtml .= "			<a href='#' class='bingtranslate_close'>X</a>\n";
+        $sHtml .= "		</div>\n";
+        $sHtml .= "		<div class='bingtranslate_body'>\n";
+        $sHtml .= "			<form action='#' method='post'>\n";
+        $sHtml .= "				<div class='translate_inputs'>\n";
+        $sHtml .= "				<select name='language_from' id='def_lang1'  class='bingtranslator_select'>\n";
+                                    foreach($aLangCode as $key=>$val){
+                                        $sHtml .= "<option value='$key' " . ( ($key==$aSettings['default_lang1']) ? "selected='selected'" : '') . ">$val</option>\n";
+                                    }
+        $sHtml .= "					</select>\n";
+        $sHtml .= "					<select name='language_to' id='def_lang2'  class='bingtranslator_select'>\n";
+                                    foreach($aLangCode as $key=>$val){
+                                        $sHtml .= "<option value='$key' " . ( ($key==$aSettings['default_lang1']) ? "selected='selected'" : '') . ">$val</option>\n";
+                                    }
+        $sHtml .= "					</select>\n";
+        $sHtml .= "				</div>\n";
+        $sHtml .= "				<a href='#' class='current_lang'><span>EN</span></a>\n";
+        $sHtml .= "				<textarea rows='2' cols='30' name='original_text' id='original_text' class='bingtranslator_textarea'></textarea>\n";
+        $sHtml .= "				<input type='button' onclick='frontPageBingtranslator.translate()' value='Translate' name='translate' id='translate'/>\n";
+        $sHtml .= "				<div id='translated_text' class='translation_div'></div>\n";
+        $sHtml .= "			</form>\n";
+        $sHtml .= "		</div>\n";
+        $sHtml .= "	</div>\n";
+
         $this->importJs('bingtranslator');
         $this->importJs('jquery.selectBox');
-//         $this->importJs('dd_roundies_0029');
+
+        $this->importJs('jquery.textarearesizer.compressed');
 
         $this->importCss('jquery.selectBox');
         $this->importJs(__CLASS__);

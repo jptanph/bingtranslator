@@ -2,7 +2,7 @@
 
 
 /*----------------------Bing Translator--------------------*/
-.bingtranslator{position:fixed;padding: 12px;width:296px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;background:#f2f2f2;border:1px solid #ddd;top:100px;left:350px;text-align:center;color:#9b9b9b}
+.bingtranslator{z-index:10000 !important;position:fixed;padding: 12px;width:296px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;background:#f2f2f2;border:1px solid #ddd;top:100px;left:-350px;text-align:center;color:#9b9b9b}
 /*
  #bingtranslator{position:fixed;padding: 12px;width:296px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;background:#f2f2f2;border:1px solid #ddd;top:100px;left:30px;}* 
  * */
@@ -14,26 +14,42 @@
 .current_lang, a.current_lang:hover{float:right;width:30px;height:91px;text-align:center;line-height:65px;background: transparent url('[IMG]/arrows.png') no-repeat left top;border:1px solid #ddd;display:block;visibility:none;}
 .current_lang:hover{background-position:left bottom;}
 .current_lang span{visibility:hidden;display:none;}
-#language_to, #language_from{width:230px;padding:3px;height:25px;}
-#original_text, #translated_text{width:274px !Important;height:100px;padding:10px;color:#000;overflow:auto;}
-#translated_text{background-color: #fff;}
-#language_to, #language_from, #original_text, #translated_text{margin:10px 0 !important;border:1px solid #ddd;}
-
-#translate{width:100px;margin:0 auto;padding:5px;color:#fff;text-align:center;background:#4e453e;border:1px solid #040301;cursor:pointer;display:block}
+#def_lang2, #def_lang1{width:230px;padding:3px;height:25px;}
+#translated_text{width:274px !Important;height:100px;padding:10px;color:#000;overflow:auto;background-color: #fff;text-align:left !important;}
+#language_to, #def_lang1, #translated_text{margin:10px 0 !important;border:1px solid #ddd;}
+#original_text{margin:10px 0 0 0 !important;border:1px solid #ddd;resize:none;width:290px !Important;height:100px;padding:8px 1px 0 5px;color:#000;overflow:auto;}
+#translate{width:100px;margin:0 auto;color:#fff;text-align:center;background:#4e453e;border:1px solid #040301;cursor:pointer;display:block}
 
 .bingmenu{position:fixed;float:left;text-align:center;left:0;top:130px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;text-align:center;color:#9b9b9b}
 .bingmenu .bingmenua span{text-align:center;display:block;}
 .bingmenu .bingmenua{padding:8px;color:#000;text-align:center;font-weight:bold;border:1px solid #ddd;display:block;text-decoration:none;}
 .bingmenu .bingmenua:hover {color:#fff;text-decoration:none;background:#4e453e;border:1px solid #040301;}
 
-
+.bingtranslator{
+    -webkit-border-radius: 9px 0 9px 9px;
+    -moz-border-radius: 9px 0 9px 9px;   
+}
 /** for ie7**/
 .bingtranslate_body{*margin-top:-19px;}
+.grippie{*margin-top:-1px;}
 /** for ie7**/
 
 /**for quirks**/
+*html .grippie{margin-top:-1px;}
 *html .bingtranslator{width:313px;}
 *html .bingtranslate_body{margin:-23px 0 0 0 !important;}
 *html .bingmenu{position:relative;left:-11px;top:115px;}
-*html .bingtranslator{position:fixed;padding: 12px;font-size:12px;border:solid 1xp red}
+*html .bingtranslator{position:fixed;padding: 12px;font-size:12px;}
 /**for quirks**/
+
+
+.grippie {
+    background:#EEEEEE url([IMG]/grippie.png) no-repeat scroll center 2px;
+    border-color:#DDDDDD;
+    border-style:solid;
+    border-width:0pt 1px 1px;
+    cursor:s-resize;
+    height:9px;
+    margin-bottom:16px;
+    overflow:hidden !important;
+}
