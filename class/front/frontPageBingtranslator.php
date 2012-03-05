@@ -7,6 +7,7 @@ class frontPageBingtranslator extends Controller_Front
     {
         usbuilder()->init($this, $aArgs);
         $sPrefix = APP_ID . '_';
+        $sHtml = "";
         $iSequence = $this->getSequence();
         $oCommonGet = common()->modelGet();
         $oCommonExec = common()->modelExec();
@@ -52,23 +53,54 @@ class frontPageBingtranslator extends Controller_Front
                 'vi' => 'Vietnamese'
         );
 
+
         $sHtml = "";
-        $sHtml .= "<select id='from'>";
-        foreach($aLangCode as $key=>$val){
-            $sHtml .= "<option value='$key' " . ( ($key==$aSettings['default_lang1']) ? "selected='selected'" : '') . ">$val</option>";
-        }
-        $sHtml .= "</select>";
-
-        $sHtml .= "<select id='to'>";
-        foreach($aLangCode as $key=>$val){
-            $sHtml .= "<option value='$key' " . ( ($key==$aSettings['default_lang2']) ? "selected='selected'" : '') . ">$val</option>";
-        }
-        $sHtml .= "</select><input type='button' value='Translate' onclick='frontPageBingtranslator.translate()'/><br /><textarea id='str' style='resize:none;width:360px;height:90px;'></textarea><br /><textarea id='result' style='resize:none;width:360px;height:90px;'></textarea>";
-
-        $this->importJs(__CLASS__);
         $this->importJs('bingtranslator');
+        $this->importJs('jquery.selectBox');
+//         $this->importJs('dd_roundies_0029');
+
+        $this->importCss('jquery.selectBox');
+        $this->importJs(__CLASS__);
         $this->importCss(__CLASS__);
         $this->assign('bingtranslator',$sHtml);
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//         $sHtml = "";
+//         $sHtml .= "<select id='from'>";
+//         foreach($aLangCode as $key=>$val){
+//             $sHtml .= "<option value='$key' " . ( ($key==$aSettings['default_lang1']) ? "selected='selected'" : '') . ">$val</option>";
+//         }
+//         $sHtml .= "</select>";
+
+//         $sHtml .= "<select id='to'>";
+//         foreach($aLangCode as $key=>$val){
+//             $sHtml .= "<option value='$key' " . ( ($key==$aSettings['default_lang2']) ? "selected='selected'" : '') . ">$val</option>";
+//         }
+//         $sHtml .= "</select><input type='button' value='Translate' onclick='frontPageBingtranslator.translate()'/><br /><textarea id='str' style='resize:none;width:360px;height:90px;'></textarea><br /><textarea id='result' style='resize:none;width:360px;height:90px;'></textarea>";

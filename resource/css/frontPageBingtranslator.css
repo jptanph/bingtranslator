@@ -1,32 +1,39 @@
 @charset "utf-8";
-html,body,div,p,input,form,ul,li,h1,textarea{margin:0;padding:0;font-size:100%;outline:0}
-body{font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;text-align:center;color:#9b9b9b}
 
-a{text-decoration:none;cursor:pointer}
-a:hover{text-decoration:underline}
-img{border:0}
-#wrap{position:relative;width:950px;margin:0 auto;text-align:left;background:#ffffcc;border:1px solid #000;}
-#header{height:50px;color:#d5d5d5;background:#2f2e2e;border-bottom:1px solid #78b8cc;}
-#footer{height:30px;color:#9ddef3;background:#336676;border-top:1px solid #000;}
 
 /*----------------------Bing Translator--------------------*/
-#bingtranslator{position:fixed;padding: 12px;width:296px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;background:#f2f2f2;border:1px solid #ddd;top:100px;left:-350px;}
+.bingtranslator{position:fixed;padding: 12px;width:296px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;background:#f2f2f2;border:1px solid #ddd;top:100px;left:350px;text-align:center;color:#9b9b9b}
 /*
  #bingtranslator{position:fixed;padding: 12px;width:296px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;background:#f2f2f2;border:1px solid #ddd;top:100px;left:30px;}* 
  * */
 .bingtranslate_top{width:100%;display:inline-block;}
-.bingtranslate_close{position:relative;float:right;width:30px;height:20px;color:#000;font-weight:bold;line-height:20px;border:1px solid #ddd;display:block;top:-13px;right:-13px;}
-a.bingtranslate_close:hover{text-decoration:none;background:#3f3f3d;color:#fff}
-.translate_inputs{float:left;width:250px;border:1px solid #ddd;}
-a.current_lang, a.current_lang:hover{float:right;width:30px;height:91px;text-align:center;line-height:65px;background: transparent url('[IMG]/arrows.png') no-repeat left top;border:1px solid #ddd;display:block;visibility:none;}
-a.current_lang:hover{background-position:left bottom;}
-a.current_lang span{visibility:hidden;display:none;}
+.bingtranslate_close{position:relative;float:right;width:30px;height:20px;color:#000;font-weight:bold;line-height:20px;border:1px solid #ddd;display:block;top:-13px;right:-13px;text-decoration:none;}
+.bingtranslate_close:hover{text-decoration:none;background:#3f3f3d;color:#fff}
+.translate_inputs{float:left;width:250px;border:1px solid #ddd;height:91px;}
+
+.current_lang, a.current_lang:hover{float:right;width:30px;height:91px;text-align:center;line-height:65px;background: transparent url('[IMG]/arrows.png') no-repeat left top;border:1px solid #ddd;display:block;visibility:none;}
+.current_lang:hover{background-position:left bottom;}
+.current_lang span{visibility:hidden;display:none;}
 #language_to, #language_from{width:230px;padding:3px;height:25px;}
 #original_text, #translated_text{width:274px !Important;height:100px;padding:10px;color:#000;overflow:auto;}
 #translated_text{background-color: #fff;}
-#language_to, #language_from, #original_text, #translated_text{margin:10px 0;border:1px solid #ddd}
+#language_to, #language_from, #original_text, #translated_text{margin:10px 0 !important;border:1px solid #ddd;}
+
 #translate{width:100px;margin:0 auto;padding:5px;color:#fff;text-align:center;background:#4e453e;border:1px solid #040301;cursor:pointer;display:block}
-.bingmenu{position:fixed;float:left;text-align:center;left:0;top:130px}
-.bingmenu a span{text-align:center;display:block;}
-.bingmenu a{padding:8px;color:#000;text-align:center;font-weight:bold;border:1px solid #ddd;display:block;}
-.bingmenu a:hover {color:#fff;text-decoration:none;background:#4e453e;border:1px solid #040301;}
+
+.bingmenu{position:fixed;float:left;text-align:center;left:0;top:130px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;text-align:center;color:#9b9b9b}
+.bingmenu .bingmenua span{text-align:center;display:block;}
+.bingmenu .bingmenua{padding:8px;color:#000;text-align:center;font-weight:bold;border:1px solid #ddd;display:block;text-decoration:none;}
+.bingmenu .bingmenua:hover {color:#fff;text-decoration:none;background:#4e453e;border:1px solid #040301;}
+
+
+/** for ie7**/
+.bingtranslate_body{*margin-top:-19px;}
+/** for ie7**/
+
+/**for quirks**/
+*html .bingtranslator{width:313px;}
+*html .bingtranslate_body{margin:-23px 0 0 0 !important;}
+*html .bingmenu{position:relative;left:-11px;top:115px;}
+*html .bingtranslator{position:fixed;padding: 12px;font-size:12px;border:solid 1xp red}
+/**for quirks**/

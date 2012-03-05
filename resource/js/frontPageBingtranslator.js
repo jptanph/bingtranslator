@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $(".bingtranslator_select").selectBox();
+    DD_roundies.addRule('.bingtranslator', '3px');
+})
 
 var frontPageBingtranslator = {
     translate : function(){
