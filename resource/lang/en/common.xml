@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<lang>
-    <menu>  
-        <var name="bingtranslator">Bing Translator</var>
-        <var name="menu_settings">Bing Translator Settings</var>
-    </menu>    
-    <var name="lang">subject</var>
-    <var name="name">Subject</var>
-</lang>

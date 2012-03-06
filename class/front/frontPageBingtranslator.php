@@ -14,6 +14,8 @@ class frontPageBingtranslator extends Controller_Front
 
         $aSettings = $oCommonGet->getData('settings', array('where' => " seq = $iSequence"));
 
+        usbuilder()->vd($aSettings);
+
         $aLangCode = array(
                 'ar' => 'Arabic',
                 'bg' => 'Bulgarian',
@@ -77,7 +79,7 @@ class frontPageBingtranslator extends Controller_Front
         $sHtml .= "					</select>\n";
         $sHtml .= "					<select name='language_to' id='def_lang2'  class='bingtranslator_select'>\n";
                                     foreach($aLangCode as $key=>$val){
-                                        $sHtml .= "<option value='$key' " . ( ($key==$aSettings['default_lang1']) ? "selected='selected'" : '') . ">$val</option>\n";
+                                        $sHtml .= "<option value='$key' " . ( ($key==$aSettings['default_lang2']) ? "selected='selected'" : '') . ">$val</option>\n";
                                     }
         $sHtml .= "					</select>\n";
         $sHtml .= "				</div>\n";
