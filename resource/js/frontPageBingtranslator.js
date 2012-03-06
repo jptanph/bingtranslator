@@ -16,12 +16,16 @@ $(document).ready(function(){
 })
 
 var frontPageBingtranslator = {
+    
     loader_timer : 0,
+    reverse_flag :1,
+    
     translate : function(){
         var sText = $("#original_text");
         var sFrom = $("#def_lang1");
         var sTo = $("#def_lang2");
-        $('#translate').attr('disabled',true).css({'background':'gray'});
+        $('#translate').attr('disabled',true).css({'background':'gray','cursor':'default'});
+        $("#translated_text").html('');
         this.translator_loader()
         var options = {
             url : usbuilder.getUrl('apiFrontBingtranslator'),
@@ -33,17 +37,15 @@ var frontPageBingtranslator = {
                 lang2 : sTo.val()
             },success : function(server_response){
                 clearInterval( frontPageBingtranslator.loader_timer);
-                //alert(server_response.Data.lang)
                 var result_translation = server_response.Data.translation
-                //sFrom.val(server_response.Data.lang)
                 sFrom.selectBox('value',server_response.Data.lang);
-
                 $("#translated_text").html(''+result_translation+'');
-                $('#translate').attr('disabled',false).css({'background':'#4e453e'})
+                $('#translate').attr('disabled',false).css({'background':'#4e453e','cursor':'pointer'})
             }
         }
         
         $.ajax(options);
+    
     },translator_loader : function(){
         
         var sdot = '';
@@ -60,10 +62,28 @@ var frontPageBingtranslator = {
                     sdot = "<span class='bingtranslator_loader'>Translating</span>";
                 }
                 
-                $('.translation_div').empty();
-                $('.translation_div').append(sdot).fadeIn();
+                $('.translation_div').html(sdot);
             }
             dot_counter++;
         },1000)
+    },reverse : function(){
+        
+        var sFrom = $("#def_lang1");
+        var sTo = $("#def_lang2");
+        
+        var sFromTemp = $("#def_lang2").val();
+        var sToTemp = $("#def_lang1").val();
+        
+        if(this.reverse_flag==1){
+            sFrom.selectBox('value',sToTemp);
+            sTo.selectBox('value',sFromTemp);
+            frontPageBingtranslator.reverse_flag = 0;
+        }else if(this.reverse_flag==0){
+            
+            sTo.selectBox('value',sToTemp);
+            sFrom.selectBox('value',sFromTemp);
+            frontPageBingtranslator.reverse_flag = 1;
+        }
+
     }
 }

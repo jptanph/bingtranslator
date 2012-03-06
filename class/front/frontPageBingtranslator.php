@@ -81,7 +81,7 @@ class frontPageBingtranslator extends Controller_Front
                                     }
         $sHtml .= "					</select>\n";
         $sHtml .= "				</div>\n";
-        $sHtml .= "				<a href='#' class='current_lang'><span>EN</span></a>\n";
+        $sHtml .= "				<a href='#' class='current_lang' ondblclick='frontPageBingtranslator.reverse()'><span>EN</span></a>\n";
         $sHtml .= "				<textarea rows='2' cols='30' name='original_text' id='original_text' class='bingtranslator_textarea'></textarea>\n";
         $sHtml .= "				<input type='button' onclick='frontPageBingtranslator.translate()' value='Translate' name='translate' id='translate'/>\n";
         $sHtml .= "				<div id='translated_text' class='translation_div'></div>\n";
