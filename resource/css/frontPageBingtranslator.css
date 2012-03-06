@@ -48,7 +48,8 @@
 
 /** for ie6**/
 .current_lang{-margin-right:2px;-height:96px}
-.translate_inputs{-width:265px;-margin-left:2px;margin-right:-2px;}
+.current_lang:hover{-margin-right:2px;-height:96px !important}
+.translate_inputs{-width:265px;-margin-left:2px;margin-right:-2px;-padding-top:8px !important;-height:88px !important}
 .bingtranslator_textarea{-width:299px !important;}
 .selectBox-dropdown{-width:245px !important;-margin-left:-15px;-margin-right:-15px;}
 .bingtranslator_tarea_bar{-width:305px !important;}
