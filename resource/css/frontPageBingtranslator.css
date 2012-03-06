@@ -9,13 +9,13 @@
 .bingtranslate_top{width:100%;display:inline-block;}
 .bingtranslate_close{position:relative;float:right;width:30px;height:20px;color:#000;font-weight:bold;line-height:20px;border:1px solid #ddd;display:block;top:-13px;right:-13px;text-decoration:none;}
 .bingtranslate_close:hover{text-decoration:none;background:#3f3f3d;color:#fff}
-.translate_inputs{float:left;width:250px;border:1px solid #ddd;height:85px;padding:6px 0 0 0;}
+.translate_inputs{float:left;width:255px;border:1px solid #ddd;height:85px;padding:6px 0 0 0;}
 
 .current_lang, a.current_lang:hover{float:right;width:30px;height:91px;text-align:center;line-height:65px;background: transparent url('[IMG]/arrows.png') no-repeat left top;border:1px solid #ddd;display:block;visibility:none;}
 .current_lang:hover{background-position:left bottom;}
 .current_lang span{visibility:hidden;display:none;}
 #def_lang2, #def_lang1{width:230px;padding:3px;height:25px;}
-#translated_text{width:274px !Important;height:100px;padding:10px;color:#000;overflow:auto;background-color: #fff;text-align:left !important;}
+#translated_text{width:274px !Important;height:100px;padding:10px;color:#000;overflow:auto;background-color: #fff;text-align:left !important;word-wrap:break-word;}
 #language_to, #def_lang1, #translated_text{margin:10px 0 5px 0 !important;border:1px solid #ddd;}
 #original_text{margin:10px 0 0 0 !important;border:1px solid #ddd;resize:none;width:288px;height:100px;padding:8px 1px 0 5px;color:#000;overflow:auto;}
 #translate{width:100px;margin:0 auto;color:#fff;text-align:center;background:#4e453e;border:1px solid #040301;cursor:pointer;display:block}
@@ -46,9 +46,18 @@
 *html .bingtranslator_options{*margin-right:5px;}
 /** for ie7**/
 
+/** for ie6**/
+.current_lang{-margin-right:2px;-height:96px}
+.translate_inputs{-width:265px;-margin-left:2px;margin-right:-2px;}
+.bingtranslator_textarea{-width:299px !important;}
+.selectBox-dropdown{-width:245px !important;-margin-left:-15px;-margin-right:-15px;}
+.bingtranslator_tarea_bar{-width:305px !important;}
+/** for ie6**/
+
+
 /**for quirks**/
-*html .bingtranslator_tarea_bar{margin-top:-1px;width:288px !important;}
-*html .bingtranslator{width:314px;}
+*html .bingtranslator_tarea_bar{margin-top:-1px;width:288px;}
+*html .bingtranslator{width:314px;position:fixed;margin-top:105px;margin-left:20px;}
 *html .bingtranslate_body{margin:-23px 0 0 0 !important;}
 *html .bingmenu{position:relative;left:-11px;top:115px;}
 *html .bingtranslator{position:fixed;padding: 12px;font-size:12px;}
