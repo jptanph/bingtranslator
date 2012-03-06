@@ -2,14 +2,14 @@
 
 
 /*----------------------Bing Translator--------------------*/
-.bingtranslator{z-index:10000 !important;position:fixed;padding: 12px;width:296px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;background:#f2f2f2;border:1px solid #ddd;top:100px;left:350px;text-align:center;color:#9b9b9b}
+.bingtranslator{z-index:10000 !important;position:fixed;padding: 12px;width:296px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;background:#f2f2f2;border:1px solid #ddd;top:100px;left:30px;text-align:center;color:#9b9b9b;visibility:hidden}
 /*
  #bingtranslator{position:fixed;padding: 12px;width:296px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;background:#f2f2f2;border:1px solid #ddd;top:100px;left:30px;}* 
  * */
 .bingtranslate_top{width:100%;display:inline-block;}
 .bingtranslate_close{position:relative;float:right;width:30px;height:20px;color:#000;font-weight:bold;line-height:20px;border:1px solid #ddd;display:block;top:-13px;right:-13px;text-decoration:none;}
 .bingtranslate_close:hover{text-decoration:none;background:#3f3f3d;color:#fff}
-.translate_inputs{float:left;width:250px;border:1px solid #ddd;height:91px;}
+.translate_inputs{float:left;width:250px;border:1px solid #ddd;height:85px;padding:6px 0 0 0;}
 
 .current_lang, a.current_lang:hover{float:right;width:30px;height:91px;text-align:center;line-height:65px;background: transparent url('[IMG]/arrows.png') no-repeat left top;border:1px solid #ddd;display:block;visibility:none;}
 .current_lang:hover{background-position:left bottom;}
@@ -17,17 +17,20 @@
 #def_lang2, #def_lang1{width:230px;padding:3px;height:25px;}
 #translated_text{width:274px !Important;height:100px;padding:10px;color:#000;overflow:auto;background-color: #fff;text-align:left !important;}
 #language_to, #def_lang1, #translated_text{margin:10px 0 5px 0 !important;border:1px solid #ddd;}
-#original_text{margin:10px 0 0 0 !important;border:1px solid #ddd;resize:none;width:290px !Important;height:100px;padding:8px 1px 0 5px;color:#000;overflow:auto;}
+#original_text{margin:10px 0 0 0 !important;border:1px solid #ddd;resize:none;width:288px;height:100px;padding:8px 1px 0 5px;color:#000;overflow:auto;}
 #translate{width:100px;margin:0 auto;color:#fff;text-align:center;background:#4e453e;border:1px solid #040301;cursor:pointer;display:block}
 
 .bingmenu{position:fixed;float:left;text-align:center;left:0;top:130px;font-size:12px;line-height:1.5em;font-family:Tahoma, Geneva, Verdana, sans-serif;text-align:center;color:#9b9b9b}
 .bingmenu .bingmenua span{text-align:center;display:block;}
-.bingmenu .bingmenua{padding:8px;color:#000;text-align:center;font-weight:bold;border:1px solid #ddd;display:block;text-decoration:none;}
+.bingmenu .bingmenua{padding:8px;color:#000;text-align:center;font-weight:bold;border:1px solid #ddd;display:block;text-decoration:none;    -webkit-border-radius: 0 6px 6px 0;-moz-border-radius: 0 6px 6px 0;}
 .bingmenu .bingmenua:hover {color:#fff;text-decoration:none;background:#4e453e;border:1px solid #040301;}
 .bingtranslator_loader{font-size:13px;font-style:italic;letter-spacing:1px;}
 
+
+.bingtranslator_select{width:230px !important;}
 /** copy **/
 .bingtranslator_options{display:block;text-align:right;margin:0;}
+.bingtranslator_options b{padding:0;}
 .bingtranslator_options .bingtranslator_copy{cursor:pointer;display:inline-block;background:url([IMG]/small_copy.png) left center no-repeat; width:17px;height:18px;}
 /** copy **/
 
@@ -38,30 +41,32 @@
 }
 /** for ie7**/
 .bingtranslate_body{*margin-top:-19px;}
-.grippie{*margin-top:-1px;}
+.bingtranslator_tarea_bar{*margin-top:-1px;}
 .bingtranslator_options{*margin-bottom:-22px;}
 *html .bingtranslator_options{*margin-right:5px;}
 /** for ie7**/
 
 /**for quirks**/
-*html .grippie{margin-top:-1px;}
-*html .bingtranslator{width:313px;}
+*html .bingtranslator_tarea_bar{margin-top:-1px;width:288px !important;}
+*html .bingtranslator{width:314px;}
 *html .bingtranslate_body{margin:-23px 0 0 0 !important;}
 *html .bingmenu{position:relative;left:-11px;top:115px;}
 *html .bingtranslator{position:fixed;padding: 12px;font-size:12px;}
+*html #translated_text{width:286px !important;}
+*html .bingtranslator_options b{margin-right:-2px;}
+*html .translate_inputs{height:91px;padding:4px 0 0 0;}
 /**for quirks**/
 
-
-.grippie {
-    background:#EEEEEE url([IMG]/grippie.png) no-repeat scroll center 2px;
+.bingtranslator_tarea_bar{
     border-color:#DDDDDD;
     border-style:solid;
     border-width:0pt 1px 1px;
-    cursor:s-resize;
+    background:#EEEEEE;
     height:9px;
     margin-bottom:16px;
     overflow:hidden !important;
 }
+
 
 .highlight {
     background-color:#4863A0;

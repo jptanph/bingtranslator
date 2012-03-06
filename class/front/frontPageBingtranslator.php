@@ -58,7 +58,7 @@ class frontPageBingtranslator extends Controller_Front
 
         $sHtml = "";
         $sHtml .= "<div class='bingmenu'>\n";
-        $sHtml .= "		<a href='#' class='bingmenua'>\n";
+        $sHtml .= "		<a href='#' class='bingmenua' onclick='frontPageBingtranslator.open_dialog()'>\n";
         $sHtml .= "			<span>B</span>\n";
         $sHtml .= "			<span>I</span>\n";
         $sHtml .= "			<span>N</span>\n";
@@ -67,7 +67,7 @@ class frontPageBingtranslator extends Controller_Front
         $sHtml .= "	</div>\n";
         $sHtml .= "	<div id='bingtranslator' class='bingtranslator'>\n";
         $sHtml .= "		<div class='bingtranslate_top'>\n";
-        $sHtml .= "			<a href='#' class='bingtranslate_close'>X</a>\n";
+        $sHtml .= "			<a href='#' class='bingtranslate_close' onclick='frontPageBingtranslator.close_dialog()'>X</a>\n";
         $sHtml .= "		</div>\n";
         $sHtml .= "		<div class='bingtranslate_body'>\n";
         $sHtml .= "			<form action='#' method='post'>\n";
@@ -83,8 +83,9 @@ class frontPageBingtranslator extends Controller_Front
                                     }
         $sHtml .= "					</select>\n";
         $sHtml .= "				</div>\n";
-        $sHtml .= "				<a href='#' class='current_lang' ondblclick='frontPageBingtranslator.reverse()'><span>EN</span></a>\n";
+        $sHtml .= "				<a href='#none' class='current_lang' onclick='frontPageBingtranslator.reverse()'><span>EN</span></a>\n";
         $sHtml .= "				<textarea rows='2' cols='30' name='original_text' id='original_text' class='bingtranslator_textarea'></textarea>\n";
+        $sHtml .= "                <div class='bingtranslator_tarea_bar'></div>\n";
         $sHtml .= "				<input type='button' onclick='frontPageBingtranslator.translate()' value='Translate' name='translate' id='translate'/>\n";
         $sHtml .= "				<div id='translated_text' class='translation_div'></div>\n";
         $sHtml .= "				<div class='bingtranslator_options' title='Copy Text'><b><span class='bingtranslator_copy' id='bingtranslator_copy' ></span></b></div>\n";
@@ -92,15 +93,11 @@ class frontPageBingtranslator extends Controller_Front
         $sHtml .= "		</div>\n";
         $sHtml .= "	</div>\n";
 
-        $this->importJs('bingtranslator');
         $this->importJs('jquery.selectBox');
-
-        $this->importJs('jquery.textarearesizer.compressed');
         $this->importJs('jquery.zclip.min');
         $this->importJs('jquery.highlight-3');
-
-
         $this->importCss('jquery.selectBox');
+        $this->importJs('curvycorners.src');
         $this->importJs(__CLASS__);
         $this->importCss(__CLASS__);
         $this->assign('bingtranslator',$sHtml);
