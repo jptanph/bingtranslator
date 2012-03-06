@@ -109,10 +109,12 @@
 	white-space: nowrap;
 	overflow: hidden;
 	background: 6px center no-repeat;
+	color:black;
 }
 
 .selectBox-options LI.selectBox-hover A {
 	background-color: #EEE;
+	text-decoration:none;
 }
 
 .selectBox-options LI.selectBox-disabled A {
