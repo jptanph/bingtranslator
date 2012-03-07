@@ -1,5 +1,8 @@
 var usbuilder = {
-		_aAppInfo : null,
+		_aAppInfo : {
+		    'app_id' : null,
+		    'seq' : null
+		},
 		_aBuilderUrlInfo : null,
         _setAppInfo: function(aAppInfo) {
             this._aAppInfo = aAppInfo;
@@ -85,7 +88,6 @@ var usbuilder = {
             return sUrl;
 		},
 		/**
-		 * 
 		getParam : function(sKey) {
 	        $sResultKey = this.getParamKey(sKey);
             var results = new RegExp('[\\?&]' + $sResultKey + '=([^&#]*)').exec(window.location.href);

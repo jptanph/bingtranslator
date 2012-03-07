@@ -56,7 +56,9 @@ class builderCore
             $aAppInfo = array(
                 'class_type' => 'front',
                 'exec_type' => 'page',
-            	'seq' => $oController->getSequence()
+            	'seq' => $oController->getSequence(),
+                'block' => strtolower(str_replace('frontPage', '', get_class($oController))),
+            	'group' => $oController->getOption('block_group')
             );
         } elseif ($oController instanceof Controller_FrontExec) {
             $aAppInfo = array(
@@ -183,19 +185,45 @@ class builderCore
         return $this->_aArgs[$sResultKey];
     }
 
-    public function getParamKey($sKey)
+    public function getParamKey($sKey = null)
     {
         $aAppInfo = $this->getAppInfo();
         if ($aAppInfo['class_type'] == 'front') {
             if ($aAppInfo['seq']) {
-                $sResultKey = strtolower(APP_ID) . '_' . $aAppInfo['seq'] . ':' . $sKey;
+                $sResultKey = strtolower(APP_ID) . '_' . $aAppInfo['seq'];
+                $iGroup = $this->getController()->getOption("block_group");
+                if($iGroup) $sResultKey .= "_".$iGroup;
+                $sResultKey .= ':' . $sKey;
             } else {
                 $sResultKey = strtolower(APP_ID) . ':' . $sKey;
             }
         } else {
             $sResultKey = $sKey;
         }
+
         return $sResultKey;
+    }
+
+    /**
+     * 프론트용 module query
+     * @param Array $aOverwriteInfo 직접 지정할 정보
+     */
+    public function getModuleSelector($aOverwriteInfo = array())
+    {
+        $aInfo = $this->getAppInfo();
+        foreach($aOverwriteInfo as $sKey => $oValue) {
+            $aInfo[$sKey] = $oValue;
+        }
+        $iGroup = $aOverwriteInfo["group"];
+        if(empty($iGroup)) $iGroup = $aInfo["group"];
+
+        $sQuery = strtolower($aInfo["app_id"]);
+        if($aInfo["seq"]) $sQuery .= ">".$aInfo["seq"];
+        if($aInfo["block"]) $sQuery .= ">".strtolower($aInfo["block"]);
+        if($iGroup) $sQuery .= "[".$iGroup."]";
+        else $sQuery .= "[^]";
+
+        return $sQuery;
     }
 
     public function vd($mData, $sKey = null)
@@ -269,6 +297,8 @@ class builderCore
         $sPath = APP_PATH . '/class/lib/builder/resource/uipack/sdk_message.js';
         $sInitScript .= file_get_contents($sPath);
         $sPath = APP_PATH . '/class/lib/builder/resource/js/sdk_common.js';
+        $sInitScript .= file_get_contents($sPath);
+        $sPath = APP_PATH . '/class/lib/builder/resource/js/sdk_multi.js';
         $sInitScript .= file_get_contents($sPath);
         $sInitScript .= "
             aBuilderUrlInfo = {

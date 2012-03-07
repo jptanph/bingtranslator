@@ -3,19 +3,21 @@
     <langs support="en" default="en"></langs>
     <api use="off">
         <ifs>
+            <if class="apiBuilderLib" permission="off" desc="API for the builder library"></if>
+            <if class="apiFrontBingtranslator" permission="off" desc="Generating the translated string that send by the user."></if>
         </ifs>
     </api>
-    <admin use="on" index="adminIndex">
+    <admin use="on" index="adminPageSettings">
         <ifs>
-            <if class="adminIndex" permission="off" desc="Sample Admin Interface"></if>
-        </ifs>
+            <if class="adminPageSettings" permission="off" desc="Default page for user settings."></if> 
+            <if class="adminExecSave" permission="off" desc="Saving settings"></if>
+            <if class="adminPageManage" permission="off" desc="Display manage page for adding sequence module"></if>        </ifs>
         <menus>
         </menus>
     </admin>
     <front use="on">
         <ifs>
-            <if class="frontSample" permission="off" code-assist="off" desc="Sample Front Interface">
-            </if>
+            <if class="frontPageBingtranslator" permission="off" code-assist="on" desc="bingtranslator block | The front user interface for bingtranslator"></if>
         </ifs>
     </front>
 </application>
